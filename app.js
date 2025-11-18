@@ -53,7 +53,7 @@ try {
     const [result] = await pool.execute(sql, params);
     console.log ('Order saved with ID:', result.insertId);
 
-    res.render('confirmation', {order}); 
+    res.render('confirmation', { order }); 
 }
     catch (err) {
         console.error('error', err) 
