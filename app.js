@@ -67,9 +67,10 @@ try {
         order.customer,
         order.email,
         order.flavor,
-        order.cone,
-        order.toppings
+        order.cone
     ];
+    let toppings = req.body["toppings[]"];
+    order.toppings = Array.isArray(toppings) ? toppings.join(", ") : "";
     const [result] = await pool.execute(sql, params);
     console.log ('Order saved with ID:', result.insertId);
 
