@@ -30,7 +30,27 @@ app.get('/admin', async (req,res) =>{
         res.status(500).send(err.message);
     }
 })
-app.post('/confirmation', async (req, res) => {
+
+app.get('/', (req, res) => {
+    res.render('home');
+})
+
+app.get('/db-test', async (req, res) => {
+    try {
+        const [orders] = await pool.query('SELECT * FROM orders');
+        res.send(orders);
+    }
+    catch (err) {
+        console.error('error', err) 
+        res.status(500).send(err.message);
+    }
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
+})
+
+app.post('/submit-order', async (req, res) => {
 try {
     const order = req.body;
 
@@ -59,45 +79,4 @@ try {
         console.error('error', err) 
         res.status(500).send('There was an error processing your order, please try again');
     }
-});
-
-app.get('/', (req, res) => {
-    res.render('home');
-})
-
-app.get('/db-test', async (req, res) => {
-    try {
-        const [orders] = await pool.query('SELECT * FROM orders');
-        res.send(orders);
-    }
-    catch (err) {
-        console.error('error', err) 
-        res.status(500).send(err.message);
-    }
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
-})
-
-app.post('/submit-order', (req, res) => {
-    // console.log(req.body);
-    // res.render(`${import.meta.dirname}/views/confirmation.html`);
-    const dateOrdered = new Date();
-    const order = {
-        timestamp: dateOrdered.toDateString(),
-        name: req.body.name,
-        email: req.body.email,
-        cone: req.body.cone,
-        flavor: req.body.flavor,
-        toppings: req.body.toppings,
-        comments: req.body.comments
-    };
-    // //const prder = req.body; order.fname
-    orders.push(order);
-    console.log(orders);
-    // // console.log(orders);
-    // res.render('confirmation', {order: order
-    // });
-    res.render('confirmation', {orders});
 });
