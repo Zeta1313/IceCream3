@@ -50,6 +50,9 @@ try {
         order.cone,
         order.toppings
     ];
+    const [result] = await pool.execute(sql, params);
+    console.log ('Order saved with ID:', result.insertId);
+
     res.render('confirmation', {order}); 
 }
     catch (err) {
