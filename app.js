@@ -30,7 +30,7 @@ app.get('/admin', async (req,res) =>{
         res.status(500).send(err.message);
     }
 })
-app.post('/confirm', async (req, res) => {
+app.post('/confirmation', async (req, res) => {
 try {
     const order = req.body;
 
