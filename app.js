@@ -50,7 +50,7 @@ try {
         order.cone,
         order.toppings
     ];
-    res.render('confirmation', {orders}); 
+    res.render('confirmation', {order}); 
 }
     catch (err) {
         console.error('error', err) 
