@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended: true}));
 // Enable static file serving (client side file that does not communicate with database)
 app.use(express.static('public'));
 const orders = [];
-const PORT = 3009;
+const PORT = 3077;
 
 dotenv.config();
  const pool = mysql2.createPool({
