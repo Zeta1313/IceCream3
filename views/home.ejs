@@ -11,7 +11,7 @@
 <body>
     <main>
     <h1>Ice Cream Order Form</h1>
-    <form action="submit-order" id="form" method="post">
+    <form action="/submit-order" id="form" method="post">
         <fieldset>
             <legend>Personal Information</legend>
             <label for="name">Name: <br><input type="text" id="name" name="customer"></label>
@@ -28,6 +28,9 @@
                     <option value="none">-- Select a flavor --</option>
                     <option value="vanilla">Vanilla</option>
                     <option value="chocolate">Chocolate</option>
+                    <option value="rasberry">Rasberry</option>
+                    <option value="salted-caramel">Salted Caramel</option>
+                    <option value="rocky-road">Rocky Road</option>
                 </select>
             </label>
             <p>Choose your cone:</p> 
@@ -39,12 +42,12 @@
             </div>
             <p>Toppings:</p>
             <div>
-                <label for="sprinkles"><input type="checkbox" name="toppings[]" id="sprinkles" value="sprinkles"> Sprinkles</label>
-                <label for="nuts"><input type="checkbox" name="toppings[]" id="nuts" value="nuts"> Nuts</label>
-                <label for="cherry"><input type="checkbox" name="toppings[]" id="cherry" value="cherry"> Cherry</label>
-                <label for="whipped-cream"><input type="checkbox" name="toppings[]" id="whipped-cream" value="whipped-cream"> Whipped Cream</label>
+                <label for="sprinkles"><input type="checkbox" name="toppings" id="sprinkles" value="sprinkles"> Sprinkles</label>
+                <label for="nuts"><input type="checkbox" name="toppings" id="nuts" value="nuts"> Nuts</label>
+                <label for="cherry"><input type="checkbox" name="toppings" id="cherry" value="cherry"> Cherry</label>
+                <label for="whipped-cream"><input type="checkbox" name="toppings" id="whipped-cream" value="whipped-cream"> Whipped Cream</label>
             </div>
-            <label for="comments">Additional Comments:</label><textarea name="comments" id="comments"></textarea>
+            <!--<label for="comments">Additional Comments:</label><textarea name="comments" id="comments"></textarea>-->
         </fieldset>
 
         <button id="submitButton" type="submit">Submit Order</button>

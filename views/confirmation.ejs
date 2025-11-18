@@ -10,28 +10,37 @@
 </head>
 <body>
     <main>
-    <% const latest = orders[orders.length - 1]; %>
     <h1>Thank you for your order!</h1>
+
     <section class="info-section">
       <h2>Personal Information</h2>
-      <div class="info-row"><strong>Name:</strong> <span><%= latest.name %></span></div>
-      <div class="info-row"><strong>Email:</strong> <span><%= latest.email %></span></div>
+      <div class="info-row"><strong>Name:</strong> <span><%= order.customer %></span></div>
+      <div class="info-row"><strong>Email:</strong> <span><%= order.email %></span></div>
     </section>
+
     <section class="info-section">
       <h2>Order Details</h2>
-      <div class="info-row"><strong>Flavor:</strong> <span><%= latest.flavor %></span></div>
-      <div class="info-row"><strong>Cone Type:</strong> <span><%= latest.cone %></span></div>
+      <div class="info-row"><strong>Flavor:</strong> <span><%= order.flavor %></span></div>
+      <div class="info-row"><strong>Cone Type:</strong> <span><%= order.cone %></span></div>
+
       <div class="info-row toppings-row">
         <strong>Toppings:</strong>
         <div class="toppings">
-          <% latest.toppings.forEach(topping => { %>
-            <span class="topping"><%= topping %></span>
-          <% }); %>
+          <% 
+            const tops = Array.isArray(order.toppings) 
+              ? order.toppings 
+              : order.toppings.split(",").map(t => t.trim());
+          %>
+          <% tops.forEach(t => { %>
+            <span class="topping"><%= t %></span>
+          <% }) %>
         </div>
       </div>
     </section>
-    <h1 class = "button"><a href="/">Place another order</a></h1>
+
+    <h1 class="button"><a href="/">Place another order</a></h1>
     </main>
+
     <footer><a href="/admin">Link: Admin Page</a></footer>
 </body>
 </html>
